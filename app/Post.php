@@ -24,13 +24,10 @@ public function getByLimit(int $limit_count = 5)
 
 public function category()
 {
-    return $this->belongsToMany('App\Category');
+    return $this->belongsTo('App\Category');
 }
 
-public function Condition()
-{
-    return $this->belongsToMany('App\Condition');
-}
+
 protected $fillable = [
     'title',
     'body',
