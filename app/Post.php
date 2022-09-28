@@ -19,7 +19,7 @@ public function index(Post $post)
 
 public function getByLimit(int $limit_count = 5)
 {
-    return $this::with('category')->orderBy('updated_at', 'DESC')->paginate($limit_count);
+    return $this::with('category','condition')->orderBy('updated_at', 'DESC')->paginate($limit_count);
 }
 
 public function category()
@@ -27,11 +27,30 @@ public function category()
     return $this->belongsTo('App\Category');
 }
 
+public function condition()
+{
+    return $this->belongsTo('App\Condition');
+}
+
+public function type()
+{
+    return $this->belongsTo('App\Type');
+}
+
 
 protected $fillable = [
     'title',
     'body',
     'category_id',
+    'category_conditon_data',
+    'category_type_data',
+    'category_material_data',
+    'category_frequency_data',
+    'condition_id',
+    'condition_data',
+    'type_id',
+    'type_data',
+    
     
     
 ];

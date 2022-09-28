@@ -13,22 +13,22 @@ class ConditionSeeder extends Seeder
     {
         DB::table('conditions')->insert([
             'condition' => '新品',
-            'condition_data' => '0',//新品=0
+            'data' => '0',//新品=0
             
         ]);
         DB::table('conditions')->insert([
             'condition' => '購入して1年以内',
-            'condition_data' => '1',//購入して1年
+            'data' => '1',//購入して1年
         ]);
         
         DB::table('conditions')->insert([
             'condition' => '購入して2年以内',
-            'condition_data' => '2',//購入して2年
+            'data' => '2',//購入して2年
                     ]);
         
         DB::table('conditions')->insert([
             'condition' => '購入して3年以内',
-            'condition_data' => '3',//購入して3年
+            'data' => '3',//購入して3年
         ]);
 }
 }

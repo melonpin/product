@@ -31,13 +31,13 @@
         
              <p>約<?php 
            
-           if((($post->category->type_data) - ($post->category->condition_data)) * ($post->category->frequency_data) < 0){
+           if((($post->type->data) - ($post->condition->data)) * ($post->category->frequency_data) < 0){
            
             echo 1 ;
             
             }else{
             
-             echo (($post->category->type_data) - ($post->category->condition_data)) * ($post->category->frequency_data);
+             echo (($post->type->data) - ($post->condition->data)) * ($post->category->frequency_data);
             
             };
             
@@ -47,8 +47,8 @@
         </div>
         <h3>詳細</h3>
         <div class = show>
-        <p href="/categories/{{ $post->category->condition_data }}">{{ $post->category->condition }}</p>
-        <p href="/categories/{{ $post->category->type_data }}">{{ $post->category->type }}</p>
+        <p href="/conditions/{{ $post->condition->id }}">{{ $post->condition->condition }}</p>
+        <p href="/types/{{ $post->type->id }}">{{ $post->type->type }}</p>
         <p href="/categories/{{ $post->category->id }}">{{ $post->category->material }}</p>
         <p href="/categories/{{ $post->category->frequency_data }}">{{ $post->category->frequency }}</p>
         </div>

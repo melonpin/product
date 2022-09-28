@@ -10,18 +10,18 @@
             @csrf
              <h2>服の状態</h2>
             <p class = condition>
-                <select name="post[category_condition_data]">
-                    @foreach($categories as $category)
-                        <option value="{{ $category->condition_data }}">{{ $category->condition }}</option>
+                <select name="post[condition_id]">
+                    @foreach($conditions as $condition)
+                        <option value="{{ $condition->id }}">{{ $condition->condition }}</option>
                     @endforeach
                 </select>
             </p>
             
             <h2>服の種類</h2>
             <p class = type>
-                <select name="post[category_type_data]">
-                    @foreach($categories as $category)
-                        <option value="{{ $category->type_data }}">{{ $category->type }}</option>
+                <select name="post[type_id]">
+                    @foreach($types as $type)
+                        <option value="{{ $type->id }}">{{ $type->type }}</option>
                     @endforeach
                  </select>
             </p>

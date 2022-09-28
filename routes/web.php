@@ -20,4 +20,5 @@
     Route::get('/posts/{post}/edit', 'PostController@edit');
     Route::get('/categories/{category}', 'CategoryController@index');
     Route::get('/conditions/{condition}', 'ConditionController@index');
+    Route::get('/types/{type}', 'TypeController@index');
    

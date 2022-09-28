@@ -15,25 +15,26 @@
             <h2>登録内容</h2>
              <h3>寿命</h3>
             
-             約<?php 
+            <?php 
         
-           if((($post->category->type_data) - ($post->category->condition_data)) * ($post->category->frequency_data) < 0){
+           if((($post->type->data) - ($post->condition->data)) * ($post->category->frequency_data) < 0){
            
-            echo 1 ;
+            echo '今が交換の時期です。';
             
             }else{
             
-             echo (($post->category->type_data) - ($post->category->condition_data)) * ($post->category->frequency_data);
+           
+             echo  ((($post->type->data) - ($post->condition->data)) * ($post->category->frequency_data));
             
             };
             
            
            ?>
-           年
+           
             
             <h3>詳細</h3>
-            <p href="/categories/{{ $post->category->condition_data }}">{{ $post->category->condition }}</p>
-            <p href="/categories/{{ $post->category->type_data }}">{{ $post->category->type }}</p>
+            <p href="/conditions/{{ $post->condition->id }}">{{ $post->condition->condition }}</p>
+            <p href="/types/{{ $post->type->id }}">{{ $post->type->type }}</p>
             <p href="/categories/{{ $post->category->material_data }}">{{ $post->category->material }}</p>
             <p href="/categories/{{ $post->category->frequency_data }}">{{ $post->category->frequency }}</p>
             

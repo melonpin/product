@@ -5,9 +5,11 @@ namespace App\Http\Controllers;
 use App\Post;
 use App\Http\Requests\PostRequest; // useする
 use App\Category;
-
+use App\Condition;
+use App\Type;
 use App\Http\Controllers\CategoryController;   //追加
-
+use App\Http\Controllers\ConditionController;   //追加
+use App\Http\Controllers\TypeController;
  
 
 class PostController extends Controller
@@ -28,11 +30,15 @@ class PostController extends Controller
         return view('posts/show')->with(['post' => $post]);
     }
 
-    public function create(Post $post, Category $category)
+    public function create(Post $post, Category $category, Condition $condition, Type $type)
     {
         
-       
-    return view('posts/create')->with(['categories' => $category->get()]);
+    return view('posts/create')->with([
+        'conditions' => $condition->get(),
+        'categories' => $category->get(),
+        'types' => $type->get(),
+    ]);   
+   
     
     
     }
