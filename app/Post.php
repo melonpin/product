@@ -37,19 +37,27 @@ public function type()
     return $this->belongsTo('App\Type');
 }
 
+public function material()
+{
+    return $this->belongsTo('App\Material');
+}
+
+
+public function frequency()
+{
+    return $this->belongsTo('App\Frequency');
+}
+
+
 
 protected $fillable = [
     'title',
     'body',
-    'category_id',
-    'category_conditon_data',
-    'category_type_data',
-    'category_material_data',
-    'category_frequency_data',
     'condition_id',
-    'condition_data',
+    'material_id',
     'type_id',
-    'type_data',
+    'frequency_id',
+   
     
     
     

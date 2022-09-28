@@ -31,13 +31,13 @@
         
              <p>約<?php 
            
-           if((($post->type->data) - ($post->condition->data)) * ($post->category->frequency_data) < 0){
+           if((($post->type->data) - ($post->condition->data)) * ($post->frequency->data) < 0){
            
-            echo 1 ;
+            echo '今が交換の時期です。' ;
             
             }else{
             
-             echo (($post->type->data) - ($post->condition->data)) * ($post->category->frequency_data);
+             echo (($post->type->data) - ($post->condition->data)) * ($post->frequency->data);
             
             };
             
@@ -49,8 +49,8 @@
         <div class = show>
         <p href="/conditions/{{ $post->condition->id }}">{{ $post->condition->condition }}</p>
         <p href="/types/{{ $post->type->id }}">{{ $post->type->type }}</p>
-        <p href="/categories/{{ $post->category->id }}">{{ $post->category->material }}</p>
-        <p href="/categories/{{ $post->category->frequency_data }}">{{ $post->category->frequency }}</p>
+        <p href="/materials/{{ $post->material->id }}">{{ $post->material->material }}</p>
+        <p href="/frequencies/{{ $post->frequency->id }}">{{ $post->frequency->frequency }}</p>
         </div>
         
         <div class="footer">

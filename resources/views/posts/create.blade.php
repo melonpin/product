@@ -28,18 +28,18 @@
             
             <h2>服の素材</h2>
             <p class = material>
-                <select name="post[category_id]">
-                    @foreach($categories as $category)
-                        <option value="{{ $category->id }}">{{ $category->material }}</option>
+                <select name="post[material_id]">
+                    @foreach($materials as $material)
+                        <option value="{{ $material->id }}">{{ $material->material }}</option>
                     @endforeach
                  </select>
             </p>
             
             <h2>洗濯頻度の予定</h2>
             <p class = frequency>
-                <select name="post[category_frequency_data]">
-                    @foreach($categories as $category)
-                        <option value="{{ $category->frequency_data }}">{{ $category->frequency }}</option>
+                <select name="post[frequency_id]">
+                    @foreach($frequencies as $frequency)
+                        <option value="{{ $frequency->id }}">{{ $frequency->frequency }}</option>
                     @endforeach
                  </select>
             </p>
