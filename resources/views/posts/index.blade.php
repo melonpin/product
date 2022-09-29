@@ -9,7 +9,7 @@
     <body>
         <h1>服の寿命を計算するアプリ</h1>
 
-        <a class='create'>[<a href='/posts/create'>新しい衣服を登録する</a>]</a>
+        <a class='create'>[<a href='/'>新しい衣服を登録する</a>]</a>
         <div class='posts'>
             @foreach ($posts as $post)
             <h2>登録内容</h2>

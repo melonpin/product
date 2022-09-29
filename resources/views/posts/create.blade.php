@@ -5,6 +5,7 @@
         <title>データ登録画面</title>
     </head>
     <body>
+        <a class='index'>[<a href='/posts/index'>登録した衣類を確認する</a>]</a>
         <h1>登録画面</h1>
         <form action="/posts" method="POST">
             @csrf
