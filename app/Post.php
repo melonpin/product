@@ -51,7 +51,6 @@ public function frequency()
 
 
 protected $fillable = [
-    'title',
     'body',
     'condition_id',
     'material_id',
