@@ -94,3 +94,11 @@
 
 /*追加*/
 
+.condition,.type,.material,.frequency,.body,.submit,h2,h4{
+  text-align:center;
+  line-height: 1.5;
+}
+.submit,h2{
+  line-height: 1.5;
+}
+

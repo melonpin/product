@@ -41,7 +41,7 @@
             </input>
         </div>
     </header>
-    {{Auth::user()->name}}さん、こんにちは！
+    {{Auth::user()->name}}さん、こんにちは！このページでは新しい服を登録することが出来ます。
     <h2>登録画面</h2>
         <form action="/posts" method="POST">
             @csrf
@@ -92,7 +92,7 @@
                     <textarea name="post[body]" placeholder="コメント記入欄（任意）">{{ old('post.body') }}</textarea>
             </div>
            
-            <input type="submit" value="保存"/>
+            <p  class = "submit"><input type="submit" value="保存"/></p>
         </form>
         
     

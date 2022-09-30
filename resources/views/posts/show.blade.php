@@ -9,25 +9,14 @@
         <title>服の寿命を計算するアプリ</title>
         <!-- Fonts -->
         <link href="https://fonts.googleapis.com/css?family=Nunito:200,600" rel="stylesheet">
-        <link rel="stylesheet" href="/css/sho.css">
+        <link rel="stylesheet" href="/css/show.css">
     </head>
     <body>
+    {{Auth::user()->name}}さん、こんにちは！このページでは先ほど登録した服の寿命を確認することが出来ます。
         <div class="content">
-            <div class="content__post">
-                <h3>本文</h3>
-                    <?php
-                    
- 
-                    if (is_null($post->body)){
-                        echo 'コメントなし';
-                    }else{
-                        echo $post->body;
-                    }
-                    ?>
-            </div>
-        </div>
+        <h1>登録結果</h1>  
         
-        <h3>寿命</h3>
+        <h4>寿命</h4>
         <div class = lifespan>
             <?php 
                 if((($post->type->data) - ($post->condition->data)) * ($post->frequency->data) < 0){
@@ -37,7 +26,7 @@
                 };
             ?>
         </div>
-        <h3>詳細</h3>
+        <h4>詳細</h4>
             <div class = show>
                 <p href="/conditions/{{ $post->condition->id }}">{{ $post->condition->condition }}</p>
                 <p href="/types/{{ $post->type->id }}">{{ $post->type->type }}</p>
@@ -45,11 +34,26 @@
                 <p href="/frequencies/{{ $post->frequency->id }}">{{ $post->frequency->frequency }}</p>
             </div>
         
-            <div class="footer">
-                <a href="/">戻る</a>
-            </div>
+        <div class="body">
+                <h4>コメント</h4>
+                    <?php
+                    
+ 
+                    if (is_null($post->body)){
+                        echo 'コメントなし';
+                    }else{
+                        echo $post->body;
+                    }
+                    ?>
+            
+        </div>
+        
+            <p class="footer">
+                <a href="/">登録画面に戻る</a>
+            </p>
+            <p class = index><a href="/posts/index">登録一覧へ</a></p>
         <p class="edit">[<a href="/posts/{{ $post->id }}/edit">修正する</a>]</p>
-        <a href="/posts/{{ $post->id }}/edit" class="btn btn--orange">PUSH</a>
+        
         <form action="/posts/{{ $post->id }}" id="form_delete" method="post" >
             @csrf
             @method('DELETE')

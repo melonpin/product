@@ -4,10 +4,12 @@
 <html lang="{{ str_replace('_', '-', app()->getLocale()) }}">
     <head>
         <meta charset="utf-8">
+        <link rel="stylesheet" href="/css/edit.css">
         <title>服の寿命を計算するアプリ</title>
     </head>
     <body>
-        <h1 class="title">編集画面</h1>
+    {{Auth::user()->name}}さん、こんにちは！このページでは登録した服の情報を修正することが出来ます。
+        <h1>編集画面</h1>
         <div class="content">
             <form action="/posts/{{ $post->id }}" method="POST">
                 @csrf
@@ -47,11 +49,11 @@
                         @endforeach
                     </select>
                 </p>
-                <div class='content__body'>
+                <div class='body'>
                     <h2>本文</h2>
                     <input type='text' name='post[body]' value="{{ $post->body }}">
                 </div>
-                <input type="submit" value="保存">
+                <p class = "submit"><input type="submit" value="保存"></p>
             </form>
         </div>
     </body>
