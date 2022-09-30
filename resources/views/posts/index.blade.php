@@ -1,3 +1,6 @@
+@extends('layouts.app')　　　　　　　　　　　　　　　　　　
+
+@section('content')
 <!DOCTYPE html>
 <html lang="{{ str_replace('_', '-', app()->getLocale()) }}">
     <head>
@@ -30,7 +33,7 @@
             <h2>コメント</h2>
                 <div class='post'>
                     <?php
-                    $post->body = NULL;
+                    
                     if (is_null($post->body)){
                         echo 'コメントなし';
                     }else{
@@ -38,11 +41,11 @@
                     }
                     ?>
                 </div>
-            　　<a class='edit'><a href='/posts/{{ $post -> id }}'>修正する</a></a>
+            　　<p class="edit">[<a href="/posts/{{ $post->id }}/edit">修正する</a>]</p>
             　　<form action="/posts/{{ $post->id }}" id="form_delete" method="post" >
             @csrf
             @method('DELETE')
-            <p class="delete">[<a onclick="return deletePost(this);">削除する</a>]</p>
+            <p class="delete"><a onclick="return deletePost(this);">削除する</a></p>
     　  </form>
     　  <script>
             function deletePost(e) {
@@ -56,3 +59,4 @@
         </div>
     </body>
 </html>
+@endsection

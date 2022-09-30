@@ -1,3 +1,7 @@
+@extends('layouts.app')　　　　　　　　　　　　　　　　　　
+
+@section('content')
+
 <html lang="{{ str_replace('_', '-', app()->getLocale()) }}">
     <head>
         <meta charset="utf-8">
@@ -37,51 +41,62 @@
             </input>
         </div>
     </header>
-    <h1>登録画面</h1>
+    {{Auth::user()->name}}さん、こんにちは！
+    <h2>登録画面</h2>
         <form action="/posts" method="POST">
             @csrf
-            <h2>服の状態</h2>
-                <p class = condition>
+            <h4>服の状態</h4>
+            <p class = "condition">
+                
                     <select name="post[condition_id]">
                         @foreach($conditions as $condition)
                             <option value="{{ $condition->id }}">{{ $condition->condition }}</option>
                         @endforeach
                     </select>
-                </p>
+                
+            </p>
             
-            <h2>服の種類</h2>
-                <p class = type>
+            <h4>服の種類</h4>
+            <p class = "type">
+                
                     <select name="post[type_id]">
                         @foreach($types as $type)
                             <option value="{{ $type->id }}">{{ $type->type }}</option>
                         @endforeach
                     </select>
-                </p>
-            
-            <h2>服の素材</h2>
-                <p class = material>
+                
+            </p>
+            <h4>服の素材</h4>
+            <p class = "material">
+                
                     <select name="post[material_id]">
                         @foreach($materials as $material)
                             <option value="{{ $material->id }}">{{ $material->material }}</option>
                         @endforeach
                     </select>
-                </p>
-            
-            <h2>洗濯頻度の予定</h2>
-                <p class = frequency>
+                
+            </p>
+            <h4>洗濯頻度の予定</h4>
+            <p class = "frequency">
+               
                     <select name="post[frequency_id]">
                         @foreach($frequencies as $frequency)
                             <option value="{{ $frequency->id }}">{{ $frequency->frequency }}</option>
                         @endforeach
                     </select>
-                </p>
+                
+            </p>
                 
             <div class="body">
-                <h2>Body</h2>
+                <h2>コメント</h2>
                     <textarea name="post[body]" placeholder="コメント記入欄（任意）">{{ old('post.body') }}</textarea>
             </div>
            
             <input type="submit" value="保存"/>
         </form>
+        
+    
+
     </body>
 </html>
+@endsection

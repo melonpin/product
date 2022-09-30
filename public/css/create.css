@@ -3,11 +3,12 @@
   justify-content: space-between;
   align-items: center;
   padding: 0 20px;
-  background: #fff;
+  background: #99CCFF;
 }
 
 .logo {
   font-size: 24px;
+  
 }
 
 /*------------------------------
@@ -90,3 +91,6 @@
 #drawer-check:checked ~ .drawer-content {
   left: 800;/* メニューを画面に入れる */
 }
+
+/*追加*/
+

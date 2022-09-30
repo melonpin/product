@@ -1,3 +1,6 @@
+@extends('layouts.app')　　　　　　　　　　　　　　　　　　
+
+@section('content')
 <!DOCTYPE HTML>
 <html lang="{{ str_replace("_", "-", app()->getLocale()) }}">
     <head>
@@ -6,14 +9,14 @@
         <title>服の寿命を計算するアプリ</title>
         <!-- Fonts -->
         <link href="https://fonts.googleapis.com/css?family=Nunito:200,600" rel="stylesheet">
-        <link rel="stylesheet" href="/css/app.css">
+        <link rel="stylesheet" href="/css/sho.css">
     </head>
     <body>
         <div class="content">
             <div class="content__post">
                 <h3>本文</h3>
                     <?php
-                    $post->body = NULL;
+                    
  
                     if (is_null($post->body)){
                         echo 'コメントなし';
@@ -46,6 +49,7 @@
                 <a href="/">戻る</a>
             </div>
         <p class="edit">[<a href="/posts/{{ $post->id }}/edit">修正する</a>]</p>
+        <a href="/posts/{{ $post->id }}/edit" class="btn btn--orange">PUSH</a>
         <form action="/posts/{{ $post->id }}" id="form_delete" method="post" >
             @csrf
             @method('DELETE')
@@ -61,3 +65,4 @@
         </script>
     </body>
 </html>
+@endsection
