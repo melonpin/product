@@ -12,56 +12,72 @@
     </head>
     <body>
     {{Auth::user()->name}}さん、こんにちは！このページでは登録した服を確認することが出来ます。
-        <h1>登録結果一覧</h1>
-            <a class='create'>[<a href='/'>新しい衣服を登録する</a>]</a>
-        <div class='posts'>
+    <h1>登録結果一覧</h1>
+    [<a class='create'><a href='/'>新しい衣服を登録する</a>]</a>
         
-        @foreach ($posts as $post)
-            <h2>登録内容</h2>
-                <h4>寿命</h4>
-                <div class = lifespan>
-                    <?php 
-                        if((($post->type->data) - ($post->condition->data)) * ($post->frequency->data) < 0){
-                            echo '今が交換の時期です。';
-                        }else{
-                            echo  ((($post->type->data) - ($post->condition->data)) * ($post->frequency->data));
-                        };
+    @foreach ($posts as $post)
+    
+    <div>
+        <div class="table-responsive container">
+            <table class="table table-bordered table-caption-top">
+                <caption>{{ $post->created_at }}に登録</caption>
+                <thead class="thead-light">
+                    <tr>
+                        <th>寿命</th>
+                        <th>服の状態</th>
+                        <th>服の種類</th>
+                        <th>服の素材</th>
+                        <th>洗濯頻度</th>
+                        <th>コメント</th>
+                    </tr>
+                </thead>
+            <tbody>
+                <tr>
+                    <td><?php 
+                    if(($post->type->data - $post->condition->data) * ($post->frequency->data) < 0){
+                        echo '今が交換の時期です。';
+                    }else{
+                        echo  '約';
+                        echo ($post->type->data - $post->condition->data) * ($post->frequency->data);
+                        echo '年';
+                    };
                     ?>
-                </div>
-                <h4>詳細</h4>
-                <div class="show">
-                    <p href="/conditions/{{ $post->condition->id }}">{{ $post->condition->condition }}</p>
-                    <p href="/types/{{ $post->type->id }}">{{ $post->type->type }}</p>
-                    <p href="/materials/{{ $post->material->id }}">{{ $post->material->material }}</p>
-                    <p href="/frequencies/{{ $post->frequency->data }}">{{ $post->frequency->frequency }}</p>
-                </div>
-            <h4>コメント</h4>
-                <div class='body'>
-                    <?php
-                    
+                    </td>
+                    <td href="/conditions/{{ $post->condition->id }}">{{ $post->condition->condition }}</td>
+                    <td href="/types/{{ $post->type->id }}">{{ $post->type->type }}</p></td>
+                    <td href="/materials/{{ $post->material->id }}">{{ $post->material->material }}</td>
+                    <td href="/frequencies/{{ $post->frequency->data }}">{{ $post->frequency->frequency }}</td>
+                    <td><?php
                     if (is_null($post->body)){
                         echo 'コメントなし';
                     }else{
                         echo $post->body;
                     }
                     ?>
-                </div>
-            　　<p class="edit">[<a href="/posts/{{ $post->id }}/edit">修正する</a>]</p>
-            　　<form action="/posts/{{ $post->id }}" id="form_delete" method="post" >
-            @csrf
-            @method('DELETE')
-            <p class="delete"><a onclick="return deletePost(this);">削除する</a></p>
-    　  </form>
-    　  <script>
-            function deletePost(e) {
-                'use strict';
-            if (confirm('削除すると復元できません。\n本当に削除しいますか？')) {
-           　    document.getElementById('form_delete').submit();
-            }
-            }
-        </script>
-            @endforeach
-        </div>
+                    </td>
+                </tr>
+            </tbody>
+        </table>
+    </div>
+    <div class = "container">
+        <button type = "button" class="btn btn-outline-info" ><a href="/posts/{{ $post->id }}/edit">修正する</a></button>
+        
+        <form action="/posts/{{ $post->id }}" id="form_{{ $post->id }}" method="post">
+    @csrf
+    @method('DELETE')
+    <button type="button" class="btn btn-primary mb-3" onclick="deletePost({{ $post->id }})">削除する</button>
+    </div>
+</form>
+        <script>
+    function deletePost(id) {
+        'use strict'
+
+        if (confirm('削除すると復元できません。\n本当に削除しますか？')) {
+            document.getElementById(`form_${id}`).submit();
+        }
+    }
+</script>
+    @endforeach
     </body>
 </html>
 @endsection

@@ -45,54 +45,46 @@
     <h2>登録画面</h2>
         <form action="/posts" method="POST">
             @csrf
-            <h4>服の状態</h4>
-            <p class = "condition">
-                
-                    <select name="post[condition_id]">
+            <div class = "w-50 container">
+                <h4>服の状態</h4>
+                <p class = "condition">
+                    <select name="post[condition_id]" class="form-control">
                         @foreach($conditions as $condition)
                             <option value="{{ $condition->id }}">{{ $condition->condition }}</option>
                         @endforeach
                     </select>
-                
-            </p>
-            
-            <h4>服の種類</h4>
-            <p class = "type">
-                
-                    <select name="post[type_id]">
+                </p>
+                <h4>服の種類</h4>
+                <p class = "type">
+                    <select name="post[type_id]" class="form-control">
                         @foreach($types as $type)
                             <option value="{{ $type->id }}">{{ $type->type }}</option>
                         @endforeach
                     </select>
-                
-            </p>
-            <h4>服の素材</h4>
-            <p class = "material">
-                
-                    <select name="post[material_id]">
+                </p>
+                <h4>服の素材</h4>
+                <p class = "material">
+                    <select name="post[material_id]" class="form-control">
                         @foreach($materials as $material)
                             <option value="{{ $material->id }}">{{ $material->material }}</option>
                         @endforeach
                     </select>
-                
-            </p>
-            <h4>洗濯頻度の予定</h4>
-            <p class = "frequency">
-               
-                    <select name="post[frequency_id]">
+                </p>
+                <h4>洗濯頻度の予定</h4>
+                <p class = "frequency">
+                    <select name="post[frequency_id]" class="form-control">
                         @foreach($frequencies as $frequency)
                             <option value="{{ $frequency->id }}">{{ $frequency->frequency }}</option>
                         @endforeach
                     </select>
-                
-            </p>
-                
-            <div class="body">
-                <h2>コメント</h2>
-                    <textarea name="post[body]" placeholder="コメント記入欄（任意）">{{ old('post.body') }}</textarea>
+                </p>
+                <p class="body">
+                    <h4>コメント</h4>
+                        <textarea name="post[body]"  class = "form-control"  placeholder="コメント記入欄（任意）">{{ old('post.body') }}</textarea>
+                </p>
             </div>
            
-            <p  class = "submit"><input type="submit" value="保存"/></p>
+            <p  class = "submit"><input type="submit" class="btn btn-primary mb-3" value="計算する"/></p>
         </form>
         
     
