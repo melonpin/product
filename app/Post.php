@@ -17,7 +17,7 @@ public function index(Post $post)
     return $post->get();
 }
 
-public function getByLimit(int $limit_count = 5)
+public function getByLimit(int $limit_count = 100)
 {
     return $this::with('category','condition')->orderBy('updated_at', 'DESC')->paginate($limit_count);
 }

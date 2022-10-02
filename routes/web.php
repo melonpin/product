@@ -14,10 +14,11 @@ Route::group(['middleware' => ['auth']], function(){
     Route::get('/posts/index', 'PostController@index');
     Route::post('/posts', 'PostController@store');
     Route::get('/', 'PostController@create');
+    Route::get('/posts/{post}/edit', 'PostController@edit');
     Route::get('/posts/{post}', 'PostController@show');
     Route::put('/posts/{post}', 'PostController@update');
     Route::delete('/posts/{post}', 'PostController@delete');
-    Route::get('/posts/{post}/edit', 'PostController@edit');
+    
     
 });
 

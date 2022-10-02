@@ -8,17 +8,17 @@
         <title>服の寿命を計算するアプリ</title>
     </head>
     <body>
-    {{Auth::user()->name}}さん、こんにちは！このページでは登録した服の情報を修正することが出来ます。
+        {{Auth::user()->name}}さん、こんにちは！このページでは登録した服の情報を修正することが出来ます。
         <h1>編集画面</h1>
-            <form action="/posts/{{ $post->id }}" method="POST">
-                @csrf
-                @method('PUT')
-                <div class = "w-50 container">
+        <form action="/posts/{{ $post->id }}" method="POST">
+            @csrf
+            @method('PUT')
+            <div class = "w-50 container">
                 <h4>服の状態</h4>
                 <p class = "condition">
                     <select name="post[condition_id]" class="form-control">
                         @foreach($conditions as $condition)
-                            <option value="{{ $condition->id }}">{{ $condition->condition }}</option>
+                            <option value="{{ $condition->id }}" >{{ $condition->condition }}</option>
                         @endforeach
                     </select>
                 </p>
@@ -29,8 +29,8 @@
                             <option value="{{ $type->id }}">{{ $type->type }}</option>
                         @endforeach
                     </select>
-                </p>
-                <h4>服の素材</h4>
+                    </p>
+            <h4>服の素材</h4>
                 <p class = "material">
                     <select name="post[material_id]" class="form-control">
                         @foreach($materials as $material)
@@ -48,7 +48,7 @@
                 </p>
                 <p class="body">
                     <h4>コメント</h4>
-                        <textarea name="post[body]"  class = "form-control"  placeholder="コメント記入欄（任意）">{{ old('post.body') }}</textarea>
+                    <input type='text' name="post[body]" value="{{ $post->body }}" class = "form-control"  placeholder="コメント記入欄（任意）">{{ old('post.body') }}</input>
                 </p>
             </div>
             <p class = "submit"><input type="submit" class="btn btn-primary mb-3" value="保存"></p>
