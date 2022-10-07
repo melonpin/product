@@ -16,18 +16,18 @@
         <h5>[<a class='create'><a href='/'>新しい衣服を登録する</a>]</a></h5>
         @foreach ($posts as $post)
             <div class="table-responsive container">
-                    <table class="table table-bordered table-caption-top">
-                        <caption>{{ $post->created_at }}に登録</caption>
-                        <thead class="thead-light">
-                            <tr>
-                                <th>寿命</th>
-                                <th>服の状態</th>
-                                <th>服の種類</th>
-                                <th>服の素材</th>
-                                <th>洗濯頻度</th>
-                                <th>コメント</th>
-                            </tr>
-                        </thead>
+                <table class="table table-bordered table-caption-top">
+                    <caption>{{ $post->created_at }}に登録</caption>
+                    <thead class="thead-light">
+                        <tr>
+                            <th>寿命</th>
+                            <th>服の状態</th>
+                            <th>服の種類</th>
+                            <th>服の素材</th>
+                            <th>洗濯頻度</th>
+                            <th>コメント</th>
+                        </tr>
+                    </thead>
                     <tbody>
                         <tr>
                             <td>
