@@ -35,6 +35,7 @@ class PostController extends Controller
             'types' => $type->get(),
             'frequencies' => $frequency->get(),
             'materials' => $material->get(),
+            'posts' => $post->getByLimit(),
         ]);   
     }
     

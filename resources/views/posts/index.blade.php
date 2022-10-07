@@ -15,8 +15,7 @@
         <h1>登録結果一覧</h1>
         <h5>[<a class='create'><a href='/'>新しい衣服を登録する</a>]</a></h5>
         @foreach ($posts as $post)
-            <div>
-                <div class="table-responsive container">
+            <div class="table-responsive container">
                     <table class="table table-bordered table-caption-top">
                         <caption>{{ $post->created_at }}に登録</caption>
                         <thead class="thead-light">
